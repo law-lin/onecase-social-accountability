@@ -1,0 +1,42 @@
+org: lawrencelin
+app: onecase-api
+service: onecase-api
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'dev'}
+  environment:
+    NODE_ENV: ${opt:stage, 'dev'}
+    SUPABASE_URL: https://sfycmswfjrtbvrfxmufr.supabase.co
+    SUPABASE_ANON_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyNDMxNjA0MSwiZXhwIjoxOTM5ODkyMDQxfQ.W7O45AWIMbv65KLvld5vdjUPreWkvBxuooUcfceN0ig
+    SUPABASE_URL_DEV: https://vsuhyzetknunjotrueun.supabase.co
+    SUPABASE_ANON_KEY_DEV: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJvbGUiOiJhbm9uIiwiaWF0IjoxNjQyMjg2MTUxLCJleHAiOjE5NTc4NjIxNTF9.99J63hpd2mXwGW21wDyWzNTx88hROj2hXvqa_XOd3gI
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
+
+package:
+  exclude:
+    - config/.env.stg
+    - config/.env.pro
+  include:
+    - config/.env.dev
+
+functions:
+  api:
+    handler: app/handler.handler
+    events:
+      - http:
+          path: /
+          method: ANY
+      - http:
+          path: /{proxy+}
+          method: ANY
+          cors: true
+
+custom:
+  serverless-offline:
+    noPrependStageInUrl: true

@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "lib": ["esnext"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "outDir": "lib",
+    "sourceMap": true,
+    "target": "esnext"
+  },
+  "exclude": ["node_modules"]
+}
