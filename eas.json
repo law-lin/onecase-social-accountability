@@ -1,0 +1,21 @@
+{
+  "cli": {
+    "version": ">= 0.44.1"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "distribution": "internal"
+    },
+    "production": {},
+    "ios-prod": {
+      "releaseChannel": "ios-prod-v1"
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
